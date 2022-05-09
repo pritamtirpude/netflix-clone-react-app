@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Navigation from "./components/navigation/Navigation";
+import SignIn from "./pages/signin/SignIn";
+import SignUp from "./pages/signup/SignUp";
+import UserProfile from "./pages/userprofile/UserProfile";
+import {
+  onAuthStateChangeListener,
+  createUserDocumentFromAuth,
+} from "./utils/firebase/firebase.utils";
+import GlobalStyles from "./GlobalStyles";
+import { setCurrentUser } from "./store/user/user.actions";
+import Details from "./pages/detail/Details";
+import MyList from "./pages/mylist/MyList";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangeListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubscribe;
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <GlobalStyles />
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route path="login" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
+        </Route>
+        <Route path="profile" element={<UserProfile />}>
+          <Route path=":id" element={<Details />} />
+        </Route>
+        <Route path="mylist" element={<MyList />} />
+      </Routes>
+      <ToastContainer />
+    </Fragment>
   );
 }
 
