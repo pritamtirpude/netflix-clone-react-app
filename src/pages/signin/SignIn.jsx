@@ -23,6 +23,7 @@ const defaultFormFields = {
 
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
+  const [isUserLoading, setIsUserLoading] = useState(false);
 
   const { email, password } = formFields;
 
@@ -50,10 +51,12 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
+      setIsUserLoading(true);
       const response = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
+      setIsUserLoading(false);
       navigate("/profile");
       resetFormFields();
     } catch (error) {
@@ -96,7 +99,10 @@ const SignIn = () => {
           onChange={handleChange}
         />
 
-        <Button buttonText="Sign In" type="submit" />
+        <Button
+          buttonText={isUserLoading ? "Loading..." : "Sign In"}
+          type="submit"
+        />
       </form>
     </SignInContainer>
   );

@@ -192,6 +192,12 @@ export const SimilarMovie = styled.div`
     border-radius: 0.5rem;
     background-color: #2f2f2f;
     overflow: hidden;
+    transition: transform 0.8s ease;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      transform: scale(0.99);
+    }
 
     .similar-info {
       padding: 0.5rem 2rem;
