@@ -6,7 +6,6 @@ import { ImCheckmark } from "react-icons/im";
 import { GiCancel } from "react-icons/gi";
 import {
   selectDetails,
-  selectLoading,
   selectSimilarMovies,
   selectMovieTrailers,
 } from "../../store/moviedetail/detail.selector";
@@ -30,7 +29,6 @@ import {
 import ReadMoreLess from "../../components/readmoreless/ReadMoreLess";
 
 const Details = () => {
-  const isLoading = useSelector(selectLoading);
   const detail = useSelector(selectDetails);
   const listItems = useSelector(selectFavouriteListItem);
   const similarMovies = useSelector(selectSimilarMovies);
