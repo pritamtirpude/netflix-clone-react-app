@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaPlay, FaPlus } from "react-icons/fa";
 import { ImCheckmark } from "react-icons/im";
 import { GiCancel } from "react-icons/gi";
+import { motion } from "framer-motion";
 import {
   selectDetails,
   selectSimilarMovies,
@@ -67,7 +68,7 @@ const Details = () => {
     <>
       {detail && (
         <Overlay className="overlay" onClick={exitOverlayHandler}>
-          <DetailContainer>
+          <DetailContainer layout>
             <MovieHeroContainer
               imgUrl={
                 detail?.backdrop_path !== null
@@ -77,18 +78,22 @@ const Details = () => {
             >
               <MovieHeroOverlay />
               <HeroInfo>
-                <h3>
+                <motion.h3 layout>
                   {detail.title ||
                     detail.name ||
                     detail.original_title ||
                     detail.original_name}
-                </h3>
+                </motion.h3>
                 <HeroButtons>
                   <button onClick={() => setIsTrailerOpen(true)}>
                     <FaPlay />
                     &nbsp; Play
                   </button>
-                  <button className="add-to-list" onClick={addToListHandler}>
+                  <button
+                    layout
+                    className="add-to-list"
+                    onClick={addToListHandler}
+                  >
                     {itemPresentInList ? (
                       <ImCheckmark style={{ color: "white" }} />
                     ) : (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { motion } from "framer-motion";
 export const Header = styled.header`
   width: 100%;
   background: ${({ imgUrl }) =>
@@ -52,7 +52,7 @@ export const NavContainer = styled.nav`
   padding: 0rem 5rem;
 `;
 
-export const MovieInfo = styled.div`
+export const MovieInfo = styled(motion.div)`
   padding: 0rem 5rem;
   margin-top: 20rem;
   width: 50rem;

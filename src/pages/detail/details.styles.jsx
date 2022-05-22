@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -11,7 +12,7 @@ export const Overlay = styled.div`
   z-index: 5;
 `;
 
-export const DetailContainer = styled.div`
+export const DetailContainer = styled(motion.div)`
   background: hsl(0, 0%, 12%);
   width: 70%;
   position: absolute;
@@ -21,7 +22,7 @@ export const DetailContainer = styled.div`
   overflow: hidden;
 `;
 
-export const MovieHeroContainer = styled.div`
+export const MovieHeroContainer = styled(motion.div)`
   background: ${({ imgUrl }) =>
     imgUrl
       ? `url(https://image.tmdb.org/t/p/original${imgUrl}) no-repeat center/cover`

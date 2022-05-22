@@ -1,9 +1,6 @@
-import {
-  ImageCardsContainer,
-  InfoContainer,
-  LinkStyle,
-} from "./imagecards.styles";
+import { ImageCardsContainer, LinkStyle } from "./imagecards.styles";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 import {
   fetchMovieDetailsAsync,
   fetchTVDetailAsync,
@@ -31,16 +28,18 @@ const ImageCards = ({ movies }) => {
   };
 
   return (
-    <ImageCardsContainer onClick={loadDetailsHandler}>
+    <ImageCardsContainer
+      onClick={loadDetailsHandler}
+      whileHover={{ scale: "1.3" }}
+      layout
+    >
       <LinkStyle to={`/profile/${movies.id}`}>
-        <img
+        <motion.img
+          layoutId={`${movies.backdrop_path} ${movies.id}`}
           src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
           loading="lazy"
           alt={movies.title || movies.original_name}
         />
-        <InfoContainer>
-          <h4>{movies.title || movies.name}</h4>
-        </InfoContainer>
       </LinkStyle>
     </ImageCardsContainer>
   );
