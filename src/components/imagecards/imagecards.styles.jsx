@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export const ImageCardsContainer = styled(motion.div)`
-  border-radius: 0.5rem;
   overflow: hidden;
   margin-top: 2rem;
 
@@ -11,6 +10,7 @@ export const ImageCardsContainer = styled(motion.div)`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 1rem;
   }
 
   h4 {

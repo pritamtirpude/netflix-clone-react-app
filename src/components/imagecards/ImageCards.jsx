@@ -30,12 +30,12 @@ const ImageCards = ({ movies }) => {
   return (
     <ImageCardsContainer
       onClick={loadDetailsHandler}
-      whileHover={{ scale: "1.3" }}
+      whileHover={{ scale: 1.2 }}
       layout
     >
       <LinkStyle to={`/profile/${movies.id}`}>
         <motion.img
-          layoutId={`${movies.backdrop_path} ${movies.id}`}
+          layout
           src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
           loading="lazy"
           alt={movies.title || movies.original_name}

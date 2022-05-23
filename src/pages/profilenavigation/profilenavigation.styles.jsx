@@ -7,6 +7,7 @@ export const Header = styled.header`
       ? `url(https://image.tmdb.org/t/p/original${imgUrl}) no-repeat center/cover`
       : ""};
   min-height: 100vh;
+  overflow: hidden;
   position: relative;
   z-index: 100;
 `;
@@ -59,6 +60,7 @@ export const MovieInfo = styled(motion.div)`
   position: absolute;
   left: 0;
   bottom: 3rem;
+  overflow: hidden;
 
   h3 {
     font-size: 5rem;

@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import ImageCards from "../imagecards/ImageCards";
-import { motion } from "framer-motion";
 
 const Cards = ({ categoryTitle, categoryData }) => {
   return (

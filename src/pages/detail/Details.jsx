@@ -152,7 +152,11 @@ const Details = () => {
                   {similarMovies
                     ?.filter((_, index) => index < 12)
                     .map((similarMovie) => (
-                      <div className="similar-card" key={similarMovie.id}>
+                      <motion.div
+                        whileHover={{ scale: 0.98 }}
+                        className="similar-card"
+                        key={similarMovie.id}
+                      >
                         <img
                           src={`https://image.tmdb.org/t/p/w500${similarMovie.poster_path}`}
                           loading="lazy"
@@ -172,7 +176,7 @@ const Details = () => {
                           </h5>
                           <ReadMoreLess>{similarMovie.overview}</ReadMoreLess>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                 </div>
               </SimilarMovie>

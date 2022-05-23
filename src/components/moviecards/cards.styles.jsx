@@ -11,7 +11,7 @@ export const MovieCardContainer = styled.div`
 
 export const ImageCardsContainer = styled(motion.div)`
   .my-swiper {
-    padding: 2rem 0rem;
+    padding: 3rem 0rem;
   }
 
   .card {

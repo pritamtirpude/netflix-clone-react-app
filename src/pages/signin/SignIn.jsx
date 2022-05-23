@@ -63,9 +63,12 @@ const SignIn = () => {
       switch (error.code) {
         case "auth/wrong-password":
           toast.error("Wrong Password");
+          setIsUserLoading(false);
+
           break;
         case "auth/user-not-found":
           toast.error("No user associated with this email");
+          setIsUserLoading(false);
           break;
         default:
           console.log({ error });
@@ -102,6 +105,7 @@ const SignIn = () => {
         <Button
           buttonText={isUserLoading ? "Loading..." : "Sign In"}
           type="submit"
+          isUserLoading={isUserLoading}
         />
       </form>
     </SignInContainer>
