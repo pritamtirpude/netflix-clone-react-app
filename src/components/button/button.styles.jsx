@@ -12,4 +12,5 @@ export const ButtonStyle = styled.button`
   color: var(--white-color);
   width: ${(props) => (props.signupstyle ? props.signupstyle : "100%")};
   margin-top: ${(props) => (props.signupstyle ? "2rem" : "")};
+  opacity: ${(props) => (props.btnLoading ? "0.8" : "1")};
 `;

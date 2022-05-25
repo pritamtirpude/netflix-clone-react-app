@@ -1,11 +1,16 @@
 import { ButtonStyle } from "./button.styles";
 
-const Button = ({ buttonText, signupstyle, isUserLoading }) => {
+function Button({ buttonText, signupstyle, isUserLoading }) {
   return (
-    <ButtonStyle signupstyle={signupstyle} disabled={isUserLoading}>
+    <ButtonStyle
+      signupstyle={signupstyle}
+      disabled={isUserLoading}
+      btnLoading={isUserLoading}
+      buttonText
+    >
       {buttonText}
     </ButtonStyle>
   );
-};
+}
 
 export default Button;

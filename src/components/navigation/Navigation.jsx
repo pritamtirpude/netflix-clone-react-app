@@ -1,4 +1,3 @@
-// import { ReactComponent as NetflixLogo } from "../../assets/netflix-logo.svg";
 import NetflixLogo from "../../assets/netflix.png";
 import { Outlet, Link } from "react-router-dom";
 import Button from "../button/Button";
