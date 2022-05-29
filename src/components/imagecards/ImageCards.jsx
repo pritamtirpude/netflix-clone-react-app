@@ -8,6 +8,8 @@ import {
   fetchSimalarTVAsync,
   fetchMovieTrailersAsync,
   fetchTVTrailersAsync,
+  fetchMoviesCastsAsync,
+  fetchTVCastsAsync,
 } from "../../store/moviedetail/detail.action";
 
 const ImageCards = ({ movies }) => {
@@ -18,10 +20,12 @@ const ImageCards = ({ movies }) => {
       dispatch(fetchTVDetailAsync(movies.id));
       dispatch(fetchSimalarTVAsync(movies.id));
       dispatch(fetchTVTrailersAsync(movies.id));
+      dispatch(fetchTVCastsAsync(movies.id));
     } else {
       dispatch(fetchMovieDetailsAsync(movies.id));
       dispatch(fetchSimalarMoviesAsync(movies.id));
       dispatch(fetchMovieTrailersAsync(movies.id));
+      dispatch(fetchMoviesCastsAsync(movies.id));
     }
 
     document.body.style.overflow = "hidden";

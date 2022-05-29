@@ -7,7 +7,7 @@ export const ButtonStyle = styled.button`
   font-family: inherit;
   font-weight: bold;
   font-size: 1.6rem;
-  cursor: pointer;
+  cursor: ${(props) => (props.btnLoading ? "unset" : "pointer")};
   background-color: var(--netflix-color);
   color: var(--white-color);
   width: ${(props) => (props.signupstyle ? props.signupstyle : "100%")};

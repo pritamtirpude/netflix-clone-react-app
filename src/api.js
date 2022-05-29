@@ -34,3 +34,9 @@ export const fetchMovieTrailers = (movieId) =>
 
 export const fetchTVTrailers = (tvId) =>
   `${BASE_URL}tv/${tvId}/videos?api_key=${API_KEY}&language=en-US`;
+
+export const fetchMovieCasts = (movieId) =>
+  `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`;
+
+export const fetchTVCasts = (tvId) =>
+  `${BASE_URL}/tv/${tvId}/credits?api_key=${API_KEY}`;

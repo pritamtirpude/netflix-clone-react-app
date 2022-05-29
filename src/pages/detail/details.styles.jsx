@@ -121,7 +121,7 @@ export const HeroButtons = styled.div`
 `;
 
 export const DetailedInfo = styled.div`
-  padding: 2rem 2rem;
+  padding: 5rem 2rem;
 `;
 
 export const Overview = styled.div`
@@ -178,8 +178,10 @@ export const SimilarMovie = styled.div`
 
   img {
     width: 100%;
-    height: 30rem;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1 / 1;
   }
 
   .results {
@@ -206,6 +208,42 @@ export const SimilarMovie = styled.div`
         font-size: 1.4rem;
         margin-top: 0.5rem;
       }
+    }
+  }
+`;
+
+export const CastsContainer = styled.div`
+  margin-top: 3rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .cast-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  .cast-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .profile-wrapper {
+      width: 50%;
+      height: 50%;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    strong {
+      margin-top: 2rem;
     }
   }
 `;

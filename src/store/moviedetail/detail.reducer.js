@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   details: {},
   similarMovies: [],
   movieVideos: [],
+  casts: [],
   isLoading: false,
   error: null,
 };
@@ -38,6 +39,12 @@ export const detailReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         movieVideos: payload,
+        isLoading: false,
+      };
+    case DETAIL_ACTION_TYPES.DETAILS_CAST:
+      return {
+        ...state,
+        casts: payload,
         isLoading: false,
       };
     case DETAIL_ACTION_TYPES.DETAIL_ERROR:

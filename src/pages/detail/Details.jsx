@@ -9,6 +9,7 @@ import {
   selectDetails,
   selectSimilarMovies,
   selectMovieTrailers,
+  selectCasts,
 } from "../../store/moviedetail/detail.selector";
 import { addFavouriteItem } from "../../store/mylist/mylist.action";
 import { detailsClear } from "../../store/moviedetail/detail.action";
@@ -26,14 +27,18 @@ import {
   H4,
   Languages,
   SimilarMovie,
+  CastsContainer,
 } from "./details.styles";
+import Placeholder from "../../assets/img-placeholder.png";
 import ReadMoreLess from "../../components/readmoreless/ReadMoreLess";
+import LoadMore from "../../components/loadmore/LoadMore.component";
 
 const Details = () => {
   const detail = useSelector(selectDetails);
   const listItems = useSelector(selectFavouriteListItem);
   const similarMovies = useSelector(selectSimilarMovies);
   const movieTrailers = useSelector(selectMovieTrailers);
+  const casts = useSelector(selectCasts);
 
   const offcialTrailer =
     movieTrailers.length > 0
@@ -43,6 +48,8 @@ const Details = () => {
       : "N0 Trailers Found";
 
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
+
+  const [loadMore, setLoadMore] = useState(6);
 
   const itemPresentInList = listItems.find((item) => item.id === detail.id);
 
@@ -149,14 +156,13 @@ const Details = () => {
               <SimilarMovie>
                 <H4>More Like This</H4>
                 <div className="results">
-                  {similarMovies
-                    ?.filter((_, index) => index < 12)
-                    .map((similarMovie) => (
-                      <motion.div
-                        whileHover={{ scale: 0.98 }}
-                        className="similar-card"
-                        key={similarMovie.id}
-                      >
+                  {similarMovies.slice(0, loadMore).map((similarMovie) => (
+                    <motion.div
+                      whileHover={{ scale: 0.98 }}
+                      className="similar-card"
+                      key={similarMovie.id}
+                    >
+                      <div className="img-wrapper">
                         <img
                           src={`https://image.tmdb.org/t/p/w500${similarMovie.poster_path}`}
                           loading="lazy"
@@ -167,19 +173,51 @@ const Details = () => {
                             similarMovie.original_name
                           }
                         />
-                        <div className="similar-info">
-                          <h5>
-                            {similarMovie.title ||
-                              similarMovie.original_title ||
-                              similarMovie.name ||
-                              similarMovie.original_name}
-                          </h5>
-                          <ReadMoreLess>{similarMovie.overview}</ReadMoreLess>
-                        </div>
-                      </motion.div>
-                    ))}
+                      </div>
+
+                      <div className="similar-info">
+                        <h5>
+                          {similarMovie.title ||
+                            similarMovie.original_title ||
+                            similarMovie.name ||
+                            similarMovie.original_name}
+                        </h5>
+                        <ReadMoreLess>{similarMovie.overview}</ReadMoreLess>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
+                {/* Load More */}
+                <LoadMore
+                  content={similarMovies}
+                  loadMore={loadMore}
+                  setLoadMore={setLoadMore}
+                />
               </SimilarMovie>
+              <CastsContainer>
+                <H4>Cast</H4>
+                <div className="cast-results">
+                  {casts.length === 0
+                    ? "No Casts Available"
+                    : casts.map((cast, index) => (
+                        <div className="cast-card" key={index}>
+                          <div className="profile-wrapper">
+                            <motion.img
+                              whileHover={{ scale: 1.2, rotate: 360 }}
+                              src={
+                                cast.profile_path !== null
+                                  ? `https://image.tmdb.org/t/p/w500${cast.profile_path}`
+                                  : Placeholder
+                              }
+                              loading="lazy"
+                              alt={cast.name || cast.original_name}
+                            />
+                          </div>
+                          <strong>{cast.name || cast.original_name}</strong>
+                        </div>
+                      ))}
+                </div>
+              </CastsContainer>
             </DetailedInfo>
           </DetailContainer>
         </Overlay>

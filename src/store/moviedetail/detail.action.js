@@ -7,6 +7,8 @@ import {
   fetchSimilarTV,
   fetchMovieTrailers,
   fetchTVTrailers,
+  fetchMovieCasts,
+  fetchTVCasts,
 } from "../../api";
 import axios from "axios";
 
@@ -24,6 +26,9 @@ const fetchSimilarMoviesSuccess = (similarMoviesArray) =>
 
 const fetchMovieTrailersSuccess = (trailersArray) =>
   createAction(DETAIL_ACTION_TYPES.DETAILS_MOVIES_TRAILERS, trailersArray);
+
+const fetchCastsDetails = (castsArray) =>
+  createAction(DETAIL_ACTION_TYPES.DETAILS_CAST, castsArray);
 
 const detailsClearSuccess = () =>
   createAction(DETAIL_ACTION_TYPES.DETAILS_CLEAR);
@@ -95,6 +100,30 @@ export const fetchTVTrailersAsync = (tv_id) => async (dispatch) => {
 
   try {
     dispatch(fetchMovieTrailersSuccess(trailers.data.results));
+  } catch (error) {
+    dispatch(fetchDetailError(error));
+  }
+};
+
+export const fetchMoviesCastsAsync = (movieId) => async (dispatch) => {
+  dispatch(fetchDetailLoading);
+
+  const movieCasts = await axios.get(fetchMovieCasts(movieId));
+
+  try {
+    dispatch(fetchCastsDetails(movieCasts.data.cast));
+  } catch (error) {
+    dispatch(fetchDetailError(error));
+  }
+};
+
+export const fetchTVCastsAsync = (tvId) => async (dispatch) => {
+  dispatch(fetchDetailLoading);
+
+  const tvCasts = await axios.get(fetchTVCasts(tvId));
+
+  try {
+    dispatch(fetchCastsDetails(tvCasts.data.cast));
   } catch (error) {
     dispatch(fetchDetailError(error));
   }
