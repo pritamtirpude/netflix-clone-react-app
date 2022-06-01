@@ -199,23 +199,25 @@ const Details = () => {
                 <div className="cast-results">
                   {casts.length === 0
                     ? "No Casts Available"
-                    : casts.map((cast, index) => (
-                        <div className="cast-card" key={index}>
-                          <div className="profile-wrapper">
-                            <motion.img
-                              whileHover={{ scale: 1.2, rotate: 360 }}
-                              src={
-                                cast.profile_path !== null
-                                  ? `https://image.tmdb.org/t/p/w500${cast.profile_path}`
-                                  : Placeholder
-                              }
-                              loading="lazy"
-                              alt={cast.name || cast.original_name}
-                            />
+                    : casts
+                        .filter((_, index) => index < 6)
+                        .map((cast, index) => (
+                          <div className="cast-card" key={index}>
+                            <div className="profile-wrapper">
+                              <motion.img
+                                whileHover={{ scale: 1.2, rotate: 360 }}
+                                src={
+                                  cast.profile_path !== null
+                                    ? `https://image.tmdb.org/t/p/w500${cast.profile_path}`
+                                    : Placeholder
+                                }
+                                loading="lazy"
+                                alt={cast.name || cast.original_name}
+                              />
+                            </div>
+                            <strong>{cast.name || cast.original_name}</strong>
                           </div>
-                          <strong>{cast.name || cast.original_name}</strong>
-                        </div>
-                      ))}
+                        ))}
                 </div>
               </CastsContainer>
             </DetailedInfo>
