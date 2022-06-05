@@ -51,21 +51,35 @@ export const NavContainer = styled.nav`
   align-items: center;
   min-height: 10vh;
   padding: 0rem 5rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 0rem 2rem;
+  }
 `;
 
 export const MovieInfo = styled(motion.div)`
   padding: 0rem 5rem;
   margin-top: 20rem;
-  width: 50rem;
+  width: 80%;
   position: absolute;
   left: 0;
   bottom: 3rem;
   overflow: hidden;
 
+  @media screen and (max-width: 768px) {
+    padding: 0rem 2rem;
+    width: 100%;
+  }
+
   h3 {
     font-size: 5rem;
     text-transform: uppercase;
     line-height: 5.5rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 3rem;
+      line-height: 3rem;
+    }
   }
 
   p {

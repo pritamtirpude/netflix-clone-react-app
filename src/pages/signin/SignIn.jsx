@@ -14,7 +14,7 @@ import {
   fetchTrendingShowsTVAsync,
 } from "../../store/movies/movies.action";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
-import { SignInContainer } from "./signin.styles";
+import { SignInContainer, ParentContainer } from "./signin.styles";
 
 const defaultFormFields = {
   email: "",
@@ -57,7 +57,7 @@ const SignIn = () => {
         password
       );
       setIsUserLoading(false);
-      navigate("/profile");
+      navigate("/browse");
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -81,34 +81,36 @@ const SignIn = () => {
   };
 
   return (
-    <SignInContainer>
-      <h2>Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          label="Email"
-          type="email"
-          name="email"
-          value={email}
-          required
-          onChange={handleChange}
-        />
+    <ParentContainer>
+      <SignInContainer>
+        <h2>Sign In</h2>
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            label="Email"
+            type="email"
+            name="email"
+            value={email}
+            required
+            onChange={handleChange}
+          />
 
-        <FormInput
-          label="Password"
-          type="password"
-          name="password"
-          value={password}
-          required
-          onChange={handleChange}
-        />
+          <FormInput
+            label="Password"
+            type="password"
+            name="password"
+            value={password}
+            required
+            onChange={handleChange}
+          />
 
-        <Button
-          buttonText={isUserLoading ? "Loading..." : "Sign In"}
-          type="submit"
-          isUserLoading={isUserLoading}
-        />
-      </form>
-    </SignInContainer>
+          <Button
+            buttonText={isUserLoading ? "Loading..." : "Sign In"}
+            type="submit"
+            isUserLoading={isUserLoading}
+          />
+        </form>
+      </SignInContainer>
+    </ParentContainer>
   );
 };
 

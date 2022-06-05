@@ -33,6 +33,10 @@ export const NavigationContainer = styled.nav`
   align-items: center;
   padding: 0rem 5rem;
   margin: 0;
+
+  @media screen and (max-width: 768px) {
+    padding: 0rem 2rem;
+  }
 `;
 
 export const LogoContainer = styled.div``;

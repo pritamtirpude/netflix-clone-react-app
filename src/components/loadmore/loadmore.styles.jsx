@@ -14,5 +14,9 @@ export const LoadMoreContainer = styled.div`
     border-radius: 50%;
     border: 2px solid white;
     cursor: pointer;
+    @media screen and (max-width: 768px) {
+      transform: none;
+      left: 45%;
+    }
   }
 `;

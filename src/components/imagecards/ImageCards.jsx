@@ -37,7 +37,7 @@ const ImageCards = ({ movies }) => {
       whileHover={{ scale: 1.2 }}
       layout
     >
-      <LinkStyle to={`/profile/${movies.id}`}>
+      <LinkStyle to={`/browse/${movies.id}`}>
         <motion.img
           layout
           src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}

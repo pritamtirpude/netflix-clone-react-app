@@ -20,6 +20,11 @@ export const DetailContainer = styled(motion.div)`
   left: 15%;
   border-radius: 0.5rem;
   overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    left: 0%;
+  }
 `;
 
 export const MovieHeroContainer = styled(motion.div)`
@@ -30,6 +35,33 @@ export const MovieHeroContainer = styled(motion.div)`
   min-height: 100vh;
   position: relative;
   z-index: 200;
+
+  @media screen and (max-width: 768px) {
+    background: ${({ imgUrl }) =>
+      imgUrl
+        ? `url(https://image.tmdb.org/t/p/original${imgUrl}) no-repeat center/cover`
+        : ""};
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    align-items: center;
+    padding: 1rem;
+    background: hsl(0, 0%, 12%);
+    color: white;
+    cursor: pointer;
+
+    strong {
+      font-size: 2rem;
+    }
+  }
 
   .video-wrapper {
     position: relative;
@@ -44,6 +76,10 @@ export const MovieHeroContainer = styled(motion.div)`
       font-size: 3rem;
       z-index: 5000;
       cursor: pointer;
+      @media screen and (max-width: 768px) {
+        top: 0;
+        right: 0rem;
+      }
     }
 
     .video {
@@ -54,6 +90,11 @@ export const MovieHeroContainer = styled(motion.div)`
       left: 50%;
       border: 0;
       transform: translate(-50%, -50%);
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 `;
@@ -88,6 +129,11 @@ export const HeroInfo = styled.div`
     line-height: 6rem;
     margin-bottom: 5rem;
     text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
   }
 `;
 
@@ -145,7 +191,12 @@ export const Genre = styled.div`
   .genres {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     margin-top: 2rem;
+
+    @media screen and (max-width: 768px) {
+      gap: 1rem;
+    }
 
     p {
       border: 2px solid var(--white-color);
@@ -162,7 +213,12 @@ export const Languages = styled.div`
   .spoken-languages {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     margin-top: 2rem;
+
+    @media screen and (max-width: 768px) {
+      gap: 1rem;
+    }
   }
 
   p {

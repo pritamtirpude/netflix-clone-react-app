@@ -63,12 +63,17 @@ const Details = () => {
     if (element.classList.contains("overlay")) {
       document.body.style.overflow = "auto";
       dispatch(detailsClear);
-      navigate("/profile");
+      navigate("/browse");
     }
   };
 
   const addToListHandler = () => {
     dispatch(addFavouriteItem(listItems, detail));
+  };
+
+  const closeModalHandler = () => {
+    document.body.style.overflow = "auto";
+    navigate("/browse");
   };
 
   return (
@@ -125,6 +130,9 @@ const Details = () => {
                   ></iframe>
                 </div>
               ) : null}
+              <div onClick={closeModalHandler} className="close-modal">
+                <strong>X</strong>
+              </div>
             </MovieHeroContainer>
             <DetailedInfo>
               <Overview>
