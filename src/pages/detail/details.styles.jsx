@@ -65,8 +65,8 @@ export const MovieHeroContainer = styled(motion.div)`
 
   .video-wrapper {
     position: relative;
-    padding-bottom: 75%;
-    overflow: hidden;
+    width: 100%;
+    height: 100vh;
 
     .cancel {
       color: var(--white-color);
@@ -76,9 +76,10 @@ export const MovieHeroContainer = styled(motion.div)`
       font-size: 3rem;
       z-index: 5000;
       cursor: pointer;
+
       @media screen and (max-width: 768px) {
-        top: 0;
         right: 0rem;
+        top: 12rem;
       }
     }
 
@@ -93,7 +94,6 @@ export const MovieHeroContainer = styled(motion.div)`
 
       @media screen and (max-width: 768px) {
         width: 100%;
-        height: 100%;
       }
     }
   }

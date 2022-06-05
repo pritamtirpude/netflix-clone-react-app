@@ -14,9 +14,17 @@ const Cards = ({ categoryTitle, categoryData }) => {
           spaceBetween={10}
           slidesPerView={5}
           loop={true}
-          navigation={true}
+          navigation
           modules={[Navigation]}
           className="my-swiper"
+          breakpoints={{
+            375: {
+              slidesPerView: 2,
+            },
+            575: {
+              slidesPerView: 5,
+            },
+          }}
         >
           {categoryData.map((movies) => (
             <SwiperSlide key={movies.id} className="card">

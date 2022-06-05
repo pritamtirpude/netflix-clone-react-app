@@ -73,6 +73,7 @@ const Details = () => {
 
   const closeModalHandler = () => {
     document.body.style.overflow = "auto";
+    dispatch(detailsClear);
     navigate("/browse");
   };
 
@@ -115,7 +116,7 @@ const Details = () => {
                 </HeroButtons>
               </HeroInfo>
               {isTrailerOpen ? (
-                <div className="video-wrapper">
+                <motion.div layout className="video-wrapper">
                   <GiCancel
                     className="cancel"
                     onClick={() => setIsTrailerOpen(false)}
@@ -128,7 +129,7 @@ const Details = () => {
                     src={`https://youtube.com/embed/${offcialTrailer.key}?autoplay=0`}
                     loading="lazy"
                   ></iframe>
-                </div>
+                </motion.div>
               ) : null}
               <div onClick={closeModalHandler} className="close-modal">
                 <strong>X</strong>
