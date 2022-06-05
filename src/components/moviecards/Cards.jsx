@@ -21,7 +21,7 @@ const Cards = ({ categoryTitle, categoryData }) => {
             375: {
               slidesPerView: 2,
             },
-            575: {
+            768: {
               slidesPerView: 5,
             },
           }}
